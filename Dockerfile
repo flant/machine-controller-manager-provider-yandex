@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 #############      builder                                  #############
-FROM golang:1.13.5 AS builder
+FROM golang:1.13.5@sha256:9da754b545f3c03e6e6fceeb86b091a97f55b1db12b6e1bef5b0e85582db1e31 AS builder
 
 WORKDIR /go/src/github.com/flant/machine-controller-manager-provider-yandex
 COPY . .
@@ -10,7 +10,7 @@ COPY . .
 RUN .ci/build
 
 #############      base                                     #############
-FROM alpine:3.11.2 as base
+FROM alpine:3.11.2@sha256:2171658620155679240babee0a7714f6509fae66898db422ad803b951257db78 as base
 
 RUN apk add --update bash curl tzdata
 WORKDIR /
